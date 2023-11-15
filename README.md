@@ -18,3 +18,7 @@ Database:
 * Store data
 * Maybe combine with backend
 
+
+MIMIC FILES:
+* Once application is approved, we should be able to build the mimc-iv database
+

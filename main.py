@@ -3,12 +3,10 @@ from admin import *
 
 
 def main():
-    print('this is in  main')
-
     admin_loggedin = False
 
     while(1):
-        cmd = input('Enter command')
+        cmd = input('Enter command: ')
         if cmd == 'admin':
             if not admin_loggedin:
                 user = input("Enter admin username")
@@ -24,7 +22,6 @@ def main():
         
         else:
             print('Please etner a valid command')
-
 
 
 if __name__ == "__main__":
