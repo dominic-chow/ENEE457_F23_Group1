@@ -16,10 +16,11 @@ def main():
                 # Can edit users and stuff here
                 print('')
         elif cmd == 'Edit':
+            # Use this to edit a patient in the database
             print('Use this to add/edit/remove patient data')
         elif cmd == 'View':
+            # use this access something from the database
             print('Use this option to view a patient"s data')
-        
         else:
             print('Please etner a valid command')
 
