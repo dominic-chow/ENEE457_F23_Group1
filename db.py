@@ -3,5 +3,5 @@
 
 # Figure out a way to manage keys/salts
 
-# https://github.com/MIT-LCP/mimic-code/tree/main
-# This is the dataset we are using, currently awaiting approval for access through Dominic
+# https://physionet.org/content/mimiciv/2.2/hosp/patients.csv.gz
+# This should be what's inside the mimic4.db database
