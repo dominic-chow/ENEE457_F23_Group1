@@ -20,8 +20,30 @@ class Mimic_DB:
         except sqlite3.Error as e:
             print(f"Error connecting to the database: {e}")
 
+    def edit(self, table, f_col, f_val, e_col, e_val):
+        query_str = 'UPDATE {} '.format(table)
+
+        for i in range(len(e_col)):
+            if i == 0:
+                query_str += 'SET '
+            else:
+                query_str += ', '
+            query_str += '{} = ?'.format(e_col[i])
+
+        for i in range(len(f_col)):
+            if i == 0:
+                query_str += ' WHERE '
+            else:
+                query_str += ' AND '
+            query_str += '{} = ?'.format(f_col[i])
+
+        print(query_str)
+        print(tuple(f_val + e_val))
+        self.cursor.execute(query_str, tuple(e_val + f_val))
+        self.connection.commit()
+
     def search(self, table, columns, values):
-        search_str = "SELECT * FROM {} ".format(table)
+        search_str = 'SELECT * FROM {} '.format(table)
         for i in range(len(columns)):
             if i == 0:
                 search_str += 'WHERE '
@@ -36,5 +58,5 @@ class Mimic_DB:
 
 
     def close(self):
-        self.curser.close()
+        self.cursor.close()
         self.connection.close()

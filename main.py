@@ -3,6 +3,7 @@ import os
 from admin import *
 from db import *
 
+DB_NAME = '"hosp/patients"'
 
 def main():
 
@@ -35,9 +36,44 @@ def main():
         elif cmd == 'edit':
             # Use this to edit a patient in the database
             print('Use this to add/edit/remove patient data')
+
+            filter = ''
+            filter_cols = []
+            filter_vals = []
+            edit_cols = []
+            edit_vals = []
+
+            print('Enter filters as <Column>=<Value>')
+            print('Type done when finished')
+            while filter != 'done':
+                filter = input('> ')
+                if filter == 'done':
+                    break
+                split_res = filter.split('=')
+                filter_cols.append(split_res[0])
+                filter_vals.append(split_res[1])
+
+            filter = ''
+            print('Enter new values as <Column>=<Value>')
+            print('Type done when finished')
+            while filter != 'done':
+                filter = input('> ')
+                if filter == 'done':
+                    break
+                split_res = filter.split('=')
+                edit_cols.append(split_res[0])
+                edit_vals.append(split_res[1])
+
+            print(filter_cols)
+            print(filter_vals)
+            print(edit_cols)
+            print(edit_vals)
+            db.edit(DB_NAME, filter_cols, filter_vals, edit_cols, edit_vals)
+
+
         elif cmd == 'view':
             filter = ''
-            categories = []
+            columns = []
             values = []
             print('Enter filters as <Column>=<Value>')
             print('Type done when finished')
@@ -46,15 +82,16 @@ def main():
                 if filter == 'done':
                     break
                 split_res = filter.split('=')
-                categories.append(split_res[0])
+                columns.append(split_res[0])
                 values.append(split_res[1])
 
-            print(categories)
-            print(values)
-
             # use this access something from the database
-            db.search('"hosp/patients"', categories, values)
+            db.search(DB_NAME, columns, values)
 
+        elif cmd == 'exit':
+            db.close()
+            print('Have a nice day!')
+            break
         else:
             print('Please etner a valid command')
 

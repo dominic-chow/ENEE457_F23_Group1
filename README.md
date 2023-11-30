@@ -1,11 +1,19 @@
 # ENEE457_F23_Group1
 
-Things that we have to do:
+TODO:
+* Add encryption to database modification and storage
+* Use haredcoded keys for ease
+* We must show that when viewing the database, the data is encrypted
+* Implement database editing
+* implement logins?
+
+
+
+Basic outline:
 
 front end/UI:
 * basically just an endless loop that thte user can use to interface with the system
 * assumg users know keys
-* maybe login/logout?
 * how to display information
 
 backend
@@ -18,7 +26,9 @@ Database:
 * Store data
 * Maybe combine with backend
 
-
 MIMIC FILES:
-* Once application is approved, we should be able to build the mimc-iv database
+* The data is stord in mimic4.db
+* This is only one table in the whole database
+* I can send you the other data if you want
+* We will just be working with the patient table for this project due to scope
 
