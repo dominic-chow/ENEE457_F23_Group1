@@ -2,6 +2,8 @@
 
 TODO:
 * Create new encrypted database (overnight)
+* \([Presentation](https://docs.google.com/presentation/d/1iKBgpcbZ87xw8Kw9oIA6z6mKHw8Q6pfWGXVQtlmzVsg/edit?usp=sharing)\)
+* Report
 
 Basic outline:
 
