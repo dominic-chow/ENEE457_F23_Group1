@@ -1,13 +1,7 @@
 # ENEE457_F23_Group1
 
 TODO:
-* Add encryption to database modification and storage
-* Use haredcoded keys for ease
-* We must show that when viewing the database, the data is encrypted
-* Implement database editing
-* implement logins?
-
-
+* Create new encrypted database (overnight)
 
 Basic outline:
 

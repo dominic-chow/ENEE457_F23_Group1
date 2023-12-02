@@ -106,6 +106,12 @@ def main():
 
 def encrypt(message, roundkeys):
 
+    if len(message)%BLOCK_SIZE != 0:
+        padding = BLOCK_SIZE - len(message)%BLOCK_SIZE  # This is always 14 because we have 18 byte message
+        message += padding.to_bytes(1, byteorder='big') * padding
+    else:
+        message += b'\x10' * 16
+
     # For the first block, XOR with IV
     last_cipher = IV
     final_ciphertext = []
@@ -137,7 +143,12 @@ def encrypt(message, roundkeys):
         # Save the encrypted block to XOR next around
         last_cipher = block
         final_ciphertext += block
-    return final_ciphertext
+
+    c_bytes = bytes()
+    for i in range(len(final_ciphertext)):
+        for j in range(4):
+            c_bytes += final_ciphertext[i][j].to_bytes(1, byteorder='big')
+    return c_bytes
 
 def decrypt(ciphertext, roundkeys):
 
@@ -173,7 +184,7 @@ def decrypt(ciphertext, roundkeys):
         plaintext += block
         last_cipher = original_cipher_block
 
-    return plaintext
+    return ''.join([chr(plaintext[i//4][i%4]) for i in range(len(plaintext)*4-plaintext[-1][-1])])
 
 # All subroutines use 4x4 int array
 def XOR_4x4(a, b):
