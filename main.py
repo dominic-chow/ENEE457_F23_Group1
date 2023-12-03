@@ -27,7 +27,6 @@ def main():
 
     while(1):
         cmd = input('Enter command: ')
-
         if cmd == 'login':
             username = input('Username: ')
             password = getpass.getpass('Password: ')
@@ -45,8 +44,8 @@ def main():
             else:
                 print('Login successful')
                 loggedin = True
+
         elif cmd == 'edit':
-            # Use this to edit a patient in the database
             if loggedin:
 
                 filter = ''
@@ -105,6 +104,30 @@ def main():
         elif cmd == 'logout':
             loggedin=False
             print('Successfully logged out')
+            
+        elif cmd == 'help':
+            print("\u0332".join("Command List: "))
+            print('''                           
+login: Use the user databse to access the record data
+
+view: use filter(s) to fetch patient data
+    
+edit: use filter(s) to edit value(s)
+
+exit: logout and quit the application 
+            ''')
+            print("\u0332".join("Available Fields: "))
+
+            print('''
+subject_id: unique identifier which specifies an individual patient
+gender: genotypical sex of the patient
+anchor_age: patient’s age in the anchor_year
+anchor_year: shifted year for the patient
+anchaor_year_group: range of years - the patient’s anchor_year occurred during this range
+ded
+                  
+Reference: https://mimic.mit.edu/docs/iv/modules/hosp/patients/
+            ''')
         elif cmd == 'exit':
             db.close()
             print('Have a nice day!')

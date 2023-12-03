@@ -40,9 +40,9 @@ class Mimic_DB:
                 query_str += ' AND '
             query_str += '{} = ?'.format(f_col[i])
 
-        print(query_str)
-        print(tuple(patient.encrypt(roundkey,  e_val) + patient.encrypt(roundkey, f_val)))
-        self.cursor.execute(query_str, tuple(patient.encrypt(roundkey,  e_val) + patient.encrypt(roundkey, f_val)))
+        encrypted_val = patient.encrypt(roundkey,  e_val)
+        encrypted_filter =  patient.encrypt(roundkey, f_val)
+        self.cursor.execute(query_str, tuple(encrypted_val + encrypted_filter))
         self.connection.commit()
 
     def search(self, roundkeys, table, columns, values):
