@@ -96,7 +96,7 @@ class Mimic_DB:
         ''')
         # Done creating encrypted table
         for row in rows:
-            # print(row)
+            print(row)
             encrypted = patient.encrypt(roundkeys, row)
             # print(encrypted)
             cursor.execute('INSERT INTO encrypted_patients VALUES (?, ?, ?, ?, ?, ?)', encrypted)

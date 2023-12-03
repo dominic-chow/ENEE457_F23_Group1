@@ -20,7 +20,8 @@ backend
 
 Database:
 * Store data
-* Maybe combine with backend
+* encrypted_mimic.db is an encrypted version of mimic4.db
+* Run main.py with encrypted_mimic.db, but you can use mimic4.db for reference to access the data
 
 MIMIC FILES:
 * The data is stord in mimic4.db
