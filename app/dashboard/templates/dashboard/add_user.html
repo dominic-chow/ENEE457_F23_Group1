@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add User</title>
+    <!-- Include any CSS or JS here -->
+</head>
+<body>
+    <h2>Add User</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create User</button>
+    </form>
+</body>
+</html>
